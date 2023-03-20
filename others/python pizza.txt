@@ -1,0 +1,109 @@
+print("Welcome to Pizza Paradise! Here are our available toppings and drinks: ")
+toppings = ["Pepperoni", "Mushrooms", "Onions", "Sausage", "Bacon", "Extra cheese", "Black olives", "Green peppers"]
+drinks = ["Coke", "Diet Coke", "Pepsi", "Diet Pepsi", "Sprite", "Fanta", "Water"]
+
+print("Toppings:")
+for topping in toppings:
+    print(topping)
+
+print("Drinks:")
+for drink in drinks:
+    print(drink)
+
+# Get user inputs
+pizza_size = input("What size pizza do you want? S, M, or L? ").lower()
+pizza_toppings = input("Enter toppings you want (comma-separated): ").title().split(", ")
+drink_choice = input("What drink would you like? ").title()
+
+# Calculate pizza cost
+pizza_cost = 0
+if pizza_size == "s":
+    pizza_cost += 10
+elif pizza_size == "m":
+    pizza_cost += 15
+elif pizza_size == "l":
+    pizza_cost += 20
+
+if len(pizza_toppings) > 0:
+    pizza_cost += len(pizza_toppings) * 1.5
+
+# Calculate drink cost
+drink_cost = 0
+if drink_choice in drinks:
+    drink_cost += 2
+
+# Calculate total cost
+total_cost = pizza_cost + drink_cost
+
+# Print final order
+print("Your order:")
+print(f"Size: {pizza_size.upper()}")
+print("Toppings: ", end="")
+for topping in pizza_toppings:
+    print(topping, end=", ")
+print(f"\nDrink: {drink_choice}")
+print(f"Total cost: {total_cost}")
+
+# Define available pizza sizes and their prices
+sizes = {
+    "small": 12.99,
+    "medium": 15.99,
+    "large": 18.99
+}
+
+# Define available pizza toppings and their prices
+toppings = {
+    "pepperoni": 1.99,
+    "mushrooms": 0.99,
+    "onions": 0.99,
+    "sausage": 1.49,
+    "bacon": 1.49,
+    "extra cheese": 1.99,
+    "black olives": 0.99,
+    "green peppers": 0.99
+}
+
+# Define available drinks and their prices
+drinks = {
+    "soda": 1.50,
+    "water": 1.00,
+    "juice": 2.00,
+    "iced tea": 2.50
+}
+
+# Ask for pizza size
+size = input("What size pizza would you like? (small/medium/large) ")
+while size not in sizes:
+    size = input("Sorry, we don't have that size. Please choose a valid size: ")
+
+# Ask for pizza toppings
+print("Which toppings would you like? (Enter one at a time. Type 'done' when finished.)")
+topping = input()
+selected_toppings = []
+while topping.lower() != "done":
+    if topping.lower() in toppings:
+        selected_toppings.append(topping)
+    else:
+        print("Sorry, we don't have that topping.")
+    topping = input()
+    
+# Ask for drinks
+print("Which drinks would you like? (Enter one at a time. Type 'done' when finished.)")
+drink = input()
+selected_drinks = []
+while drink.lower() != "done":
+    if drink.lower() in drinks:
+        selected_drinks.append(drink)
+    else:
+        print("Sorry, we don't have that drink.")
+    drink = input()
+
+# Calculate the total cost
+cost = sizes[size]
+for topping in selected_toppings:
+    cost += toppings[topping.lower()]
+for drink in selected_drinks:
+    cost += drinks[drink.lower()]
+
+# Print the order summary and total cost
+print(f"Your order summary:\nSize: {size.title()}\nToppings: {', '.join(selected_toppings)}\nDrinks: {', '.join(selected_drinks)}\nTotal cost: ${cost:.2f}")
