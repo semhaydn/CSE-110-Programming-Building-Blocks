@@ -108,9 +108,6 @@ if country_max_year is not None:
 else:
     print(f"No data found for {country_of_interest}")
 
-
-
-
 print()
 
 
