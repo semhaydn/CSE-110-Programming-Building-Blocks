@@ -6,6 +6,17 @@
 
 import math
 
+def compute_area_square(side):
+    area = compute_area_rectangle(side, side)
+    return area
+
+def compute_area_rectangle(length, width):
+    area = length * width
+    return area
+
+def compute_area_circle(radius):
+    return math.pi * radius * radius
+
 def compute_area(choice, side=0, radius=0, length=0, width=0):
     area = -1
     
@@ -13,19 +24,18 @@ def compute_area(choice, side=0, radius=0, length=0, width=0):
         if side <= 0:
             print("Invalid side length. Please enter a positive value.")
         else:
-            area = side * side
+            area = compute_area_square(side)
     elif choice == "circle":
         if radius <= 0:
             print("Invalid radius. Please enter a positive value.")
         else:
-            area = math.pi * radius ** 2
+            area = compute_area_circle(radius)
     elif choice == "rectangle":
         if length <= 0 or width <= 0:
             print("Invalid length or width. Please enter positive values.")
         else:
-            area = length * width   
+            area = compute_area_rectangle(length, width)   
     return area
-# Prompting a welcome
     # Asking for the choice
 while True:
     choice = input('What kind of shape do you have? (square, rectangle, circle or quit if you want to quit): ').lower()
@@ -42,7 +52,7 @@ while True:
                 break
             except ValueError:
                 print("Invalid input. Please enter a number.")
-        area_square = compute_area(choice, side)
+        area_square = compute_area(choice, side=side)
         if area_square >= 0:
             print(f'The area of the square is {area_square}')
     # prompting user result for rectangle
@@ -70,7 +80,6 @@ while True:
             print(f'The area of the circle is {area_circle:.2f}')     
     else:
         print('Invalid shape name. Please enter a valid name (square, rectangle, circle, quit).')
-
 
 
 
