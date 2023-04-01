@@ -22,7 +22,7 @@ while True:
     except ValueError:
         print("Invalid input. Please enter a number.")
 while True:
-    choice = input('Fahrenheit or Celcius (F/C) or quit ? ').lower()
+    choice = input('Fahrenheit or Celsius (F/C) or quit ? ').lower()
     if choice == 'quit':
         break
     elif choice == '':
